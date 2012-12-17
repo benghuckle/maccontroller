@@ -2,7 +2,7 @@ var jQT = new $.jQTouch({
     icon4: 'mcicon.png',
     icon: 'mciconNR.png',
     addGlossToIcon: true,
-    startupScreen: 'startup2.png',
+    startupScreen: 'startup.png',
     statusBar: 'black-translucent',
 
     preloadImages: [
