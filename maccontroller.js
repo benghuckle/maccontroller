@@ -75,11 +75,11 @@ $(function(){
     $('#reboot').bind('tap', function(ev){
     var confirm_result = confirm('Are you sure you want to reboot?');
 
-    if(confirm_result != false){
-          ev.preventDefault();
-
-      $.get('functions.php?func=reboot');
-    }
+	    if(confirm_result != false){
+	          ev.preventDefault();
+	
+	      $.get('functions.php?func=reboot');
+	    }
       
       $(this).removeClass('active');
       return false;   
@@ -95,12 +95,8 @@ $(function(){
     
     
 });
-function getTrackInfo() {
-  startLoader($('#itunes'));
-  $.get('functions.php?func=itunes&info=track',function(data){
-    stopLoader($('#itunes'),data);
-  });
-}
+
+
 function startLoader($el) {
   $el.find('.info').html('<p style="text-align:center"><img src="themes/ajax-loader.gif" /></p>');
 }
