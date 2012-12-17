@@ -45,17 +45,6 @@ $(function(){
         });
       }
       
-      /*
-if ($(this).val() == 'on') {
-        $.get('functions.php?func=startapp&app='+app,function(data){
-          stopLoader($('#apps'),data);
-        });
-      } else {
-        $.get('functions.php?func=stopapp&app='+app,function(data){
-          stopLoader($('#apps'),data);
-        });
-      }
-*/
     });
     $('#volume').bind('pageAnimationStart', function(e, info){ 
       startLoader($('#volume'));
