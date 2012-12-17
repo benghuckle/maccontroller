@@ -46,13 +46,6 @@ switch ($_REQUEST['func'])
   echo stopapp($_REQUEST['app']);
   break;
   
-  case "itunes":
-  $itunes = new iTunes;
-  if ($_REQUEST['cmd'])
-    echo $itunes->action($_REQUEST['cmd']);
-  elseif ($_REQUEST['info'])
-    echo $itunes->info($_REQUEST['info']);
-  break;
   case "":
   default:
   echo "No command";
@@ -90,13 +83,6 @@ function testvol() {
 }
 
 function reboot() {
-  //exec("osascript -e 'tell app \"System Events\" to display dialog \"Hello World\"'");
-  //exec("osascript -e 'tell app \"System Events\" to display dialog \"This mac is restarting\"'");
-  //exec("osascript -e 'tell app \"Finder\" to activate' -e 'tell app \"Finder\" to display dialog \"You are connected to this mac\"'");
-
- //exec("osascript -e 'say \"Ben is not cool\"'");
-  //exec("osascript -e 'tell application \"Finder\" to make new Finder window'");
- //exec("osascript -e 'tell application \"Byword\" to launch'");
  exec("osascript -e 'tell application \"System Events\" to restart'");
  return "done";
 }
@@ -137,48 +123,7 @@ function volchange($diff) {
   return "Volume: $newvolume";
 }
 
-/**
-* iTunes controls
-*/
-class iTunes
-{
-  public function action($cmd) {
-    exec("osascript -e 'tell application \"iTunes\" to $cmd'");
-    switch($cmd) {
-      case "playpause":
-      case "stop":
-      case "play":
-      case "pause":
-      exec("osascript -e 'tell application \"iTunes\" to return player state'",$response);
-      return "iTunes is ".$response[0];
-      break;
-      case "next track":
-      case "previous track":
-      case "back track":
-      return $this->info('track');
-      break;
-      case (preg_match("/^set the sound volume/i", $cmd)?$cmd:!$cmd):
-      exec("osascript -e 'tell application \"iTunes\" to return the sound volume'",$response);
-      return "Volume: $response[0]%";
-      break;
-      case (preg_match("/^set the current EQ/i", $cmd)?$cmd:!$cmd):
-      return $this->info('eq');
-      break;
-      default:
-      return $cmd;
-      break;
-    }
-  }
-  public function info($type) {
-    switch($type) {
-      case "track":
-      return "Current track: ".exec("osascript -e 'tell application \"iTunes\" to return name of current track & \" by \" & artist of current track'");
-      break;
-      case "eq":
-      return "EQ Preset: ".exec("osascript -e 'tell application \"iTunes\" to return name of current EQ preset'");
-      break;
-    }
-  }
+
 }
 
 ?>

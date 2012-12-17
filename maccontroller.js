@@ -1,12 +1,12 @@
 var jQT = new $.jQTouch({
     icon4: 'mcicon.png',
     icon: 'mciconNR.png',
-    addGlossToIcon: true,
+    addGlossToIcon: false,
     startupScreen: 'startup.png',
     statusBar: 'black-translucent',
 
     preloadImages: [
-        'themes/apple/img/ajax-loader.gif'
+        'themes/ajax-loader.gif'
         ]
 });
 $(function(){
@@ -71,19 +71,7 @@ $(function(){
       $(this).removeClass('active');
       return false;                  
     });
-    /*
-$('#reboot').click(function(ev){
-      ev.preventDefault();
-      var oldinfo = $('#volume .info').html();
-      startLoader($('#volume'));
-      $.get('functions.php?func=reboot',function(data) {
-        stopLoader($('#volume'),oldinfo);
-      });
-      $(this).removeClass('active');
-      return false;                  
-    });
     
-*/
     $('#reboot').bind('tap', function(ev){
     var confirm_result = confirm('Are you sure you want to reboot?');
 
@@ -106,49 +94,6 @@ $('#reboot').click(function(ev){
     });
     
     
-	
-    $('#itunes').bind('pageAnimationStart', function(e, info){
-      getTrackInfo();
-    });
-    // $('#itunes div.toolbar a.back').click(function(){
-    //   $('#itunes li>a').unbind('click');
-    // });
-    var itunestimeout = 0;
-    $('#itunes').bind('pageAnimationEnd', function(e, info){
-      $('#itunescmd li>a').click(function(ev){
-        ev.preventDefault();
-        startLoader($('#itunes'));
-        $.get('functions.php?func=itunes&cmd='+$(this).attr('rel'),function(d) {        
-          stopLoader($('#itunes'),d);
-          if (!(/^Current track/).test(d)) {
-            clearTimeout(itunestimeout);
-            itunestimeout = setTimeout("getTrackInfo()",1400);
-          }
-            
-        });
-        $(this).removeClass('active');
-        return false;
-      });
-      $('#itunes .info').tap(function(e){
-        getTrackInfo();
-      });
-    });
-    $('#ituneseq li>a').click(function(ev){
-      ev.preventDefault();
-      startLoader($('#ituneseq'));
-      var eqcmd = escape('set the current EQ preset to EQ preset "'+$(this).text()+'"');
-      $.get('functions.php?func=itunes&cmd='+eqcmd,function(d) {        
-        stopLoader($('#ituneseq'),d);
-      });
-      $(this).removeClass('active');
-      return false;
-    });
-    $('#ituneseq').bind('pageAnimationStart', function(e, info){
-      startLoader($('#ituneseq'));
-      $.get('functions.php?func=itunes&info=eq',function(data){
-        stopLoader($('#ituneseq'),data);
-      });      
-    });
 });
 function getTrackInfo() {
   startLoader($('#itunes'));
@@ -157,7 +102,7 @@ function getTrackInfo() {
   });
 }
 function startLoader($el) {
-  $el.find('.info').html('<p style="text-align:center"><img src="themes/apple/img/ajax-loader.gif" /></p>');
+  $el.find('.info').html('<p style="text-align:center"><img src="themes/ajax-loader.gif" /></p>');
 }
 function stopLoader($el,data) {
   $el.find('.info').html('<p style="text-align:center">'+data+'</p>');
