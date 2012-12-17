@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<script type="text/javascript">
+            	var newURL = window.location.host;
+            	var title = "<title>" + newURL + "</title>;"
+        </script>
+		
+			<script type="text/javascript">           	
+		    	document.write (title);
+            </script>
+		<style type="text/css" media="screen">@import "themes/jqtouch.css";</style>
+<!-- 	    <style type="text/css" media="screen">@import "themes/apple.css";</style> -->
+	    <script src="jqtouch/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
+		<script src="jqtouch/jquery-1.7.min.js" type="application/x-javascript" charset="utf-8"></script>
+        <script src="jqtouch/jqtouch-jquery.min.js" type="application/x-javascript" charset="utf-8"></script>
+		<script src="maccontroller.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css" media="screen">
+            body.fullscreen #home .info {
+                display: none;
+            }
+            #about {
+                padding: 100px 0 0;
+                text-shadow: rgba(0, 0, 0, 0.3) 0px -1px 0;
+                color: #999;
+                font-size: 13px;
+                text-align: center;
+                background: #161618;
+            }
+            #about p {
+                margin-bottom: 8px;
+            }
+            #about a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: none;
+            }            
+            .info {
+              min-height:20px;
+              margin-bottom: 10px;
+            }
+        </style>
+	</head>
+
+<body>
+
+	<div id="home" class="current">
+        <div class="toolbar">
+            <h1>Mac Controller</h1>
+            <a class="button slideup" id="infoButton" href="#about">About</a>
+
+        </div>
+        <div class="info">
+            <p><i>You are connected to 
+            <script type="text/javascript">
+            	document.write (" ");
+            	document.write (newURL);
+            </script>
+            </i></p>
+            <p>Select a function set below</p>
+
+        </div>
+        <ul class="rounded">
+        	<li><i><script type="text/javascript">
+            	document.write (" ");
+            	document.write (newURL);
+            </script></i>
+</li>
+        </ul>
+        <ul class="rounded">
+            <li class="arrow"><a href="#volume">System Volume</a></li>
+            <li class="arrow"><a href="#apps">Applications</a></li>
+        </ul>    
+        
+        <ul class="rounded">
+        	<li><a id="reboot" href="#">Reboot Mac</a></li>
+        	<li><a id="identify" href="#">Identify Mac</a></li>
+
+        </ul>
+	</div>
+
+
+      <div id="volume">
+        <div class="toolbar">
+            <h1>System Volume</h1>
+            <a class="back" href="#home">Home</a>
+        </div>
+        <div class="info"></div>
+        <ul class="rounded" id="volumecmd">
+            <li><a rel="mute" href="#">Toggle Mute</a></li>
+            <li><a rel="volup" href="#">Volume Up</a></li>
+            <li><a rel="voldown" href="#">Volume Down</a></li>
+        </ul>          
+        <ul class="rounded">
+          <li><a id="testvolume" href="#">Test Volume</a></li>		  
+        </ul>
+    </div>
+    
+    <div id="apps">
+          <div class="toolbar">
+              <h1>Applications</h1>
+              <a class="back" href="#">Home</a>
+          </div>
+          <div class="info"></div>
+          <ul class="rounded">
+              <li><span class="applaunch">Jaguar F-Type App</span> <span class="toggle"><input type="checkbox" /></span></li>
+              <li><span class="applaunch">TextEdit</span> <span class="toggle"><input type="checkbox" /></span></li>
+
+<!--               <li><span class="applaunch">iTunes</span> <span class="toggle"><input type="checkbox" /></span></li> -->
+              
+               <li><span class="applaunch">iTunes</span> <span class="toggle"><input type="checkbox" /></span></li>
+
+              
+          </ul>
+          
+      </div>
+      
+	  <!--
+ <div id="about">
+	        <p><strong>Mac Controller</strong><br />v0.1<br />
+	            <a href="http://brettterpstra.com">By Brett Terpstra</a></p>
+	        <p><strong>AppleScript-based control of your home Mac.</strong></p>
+	        <p>
+	            <a href="http://twitter.com/ttscoff" target="_blank">@ttscoff on Twitter</a>
+	        </p>
+	        <p><br /><br /><a href="#" class="grayButton goback">Close</a></p>
+      </div>
+-->
+	<div id="about" class="selectable">
+	        <p><img src="mcicon.png" width="114" height="114" /></p>
+	        <p><strong>Mac Controller</strong><br>Version 0.1<br>
+	        <p><br><br><a href="#" class="grayButton goback">Close</a></p>
+	</div>
+
+</body>
+
+</html>
